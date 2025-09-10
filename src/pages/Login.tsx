@@ -31,18 +31,20 @@ export default function Login() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
+    <div className="flex h-screen items-center justify-center bg-main-black">
       <form
         onSubmit={handleLogin}
-        className="bg-white p-6 rounded-xl shadow-md flex flex-col gap-4 w-80"
+        className="bg-point-black p-6 rounded-xl shadow-md flex flex-col gap-4 w-80"
       >
-        <h2 className="text-xl font-bold">로그인</h2>
+        <h2 className="text-main-white text-xl font-bold">
+          나만의 애창곡 | Conodex
+        </h2>
         <input
           type="email"
           placeholder="이메일"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 rounded"
+          className="border border-2 p-2 rounded text-main-white"
           required
         />
         <input
@@ -50,16 +52,22 @@ export default function Login() {
           placeholder="비밀번호"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border p-2 rounded"
+          className="border border-2 p-2 rounded text-main-white"
           required
         />
         <button
           type="submit"
           disabled={pending}
-          className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 disabled:opacity-60"
+          className="bg-blue-500 text-main-white p-2 rounded hover:bg-blue-600 disabled:opacity-60"
         >
           {pending ? "로그인 중..." : "로그인"}
         </button>
+        <a className="text-main-white self-start" href="/signUp">
+          회원가입
+        </a>
+        <a className="text-main-white self-start" href="/FindPwd">
+          비밀번호 찾기
+        </a>
       </form>
     </div>
   );

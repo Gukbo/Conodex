@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import MySongs from "./pages/MySongs";
+import FindPwd from "./pages/FindPwd";
 
 export default function App() {
   const { user, loading } = useAuth();
@@ -13,11 +14,12 @@ export default function App() {
   return (
     <Routes>
       {/* 메인: 로그인 상태에 따라 이동 */}
-      <Route path="/" element={user ? <Home /> : <Navigate to="/signup" />} />
+      <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
 
       {/* 회원가입 / 로그인 페이지 */}
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/findpwd" element={<FindPwd />} />
 
       {/* 로그인해야 접근 가능한 페이지 */}
       <Route
