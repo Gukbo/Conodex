@@ -17,18 +17,20 @@ export default function FindPwd() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
+    <div className="flex h-screen items-center justify-center bg-main-black">
       <form
         onSubmit={handleReset}
-        className="bg-white p-6 rounded-xl shadow-md flex flex-col gap-4 w-80"
+        className="bg-point-black p-6 rounded-xl shadow-md flex flex-col gap-4 w-80"
       >
-        <h2 className="text-xl font-bold">비밀번호 재설정</h2>
+        <h2 className="text-main-white font-bold">비밀번호 재설정</h2>
         {sent ? (
           <>
             <p className="text-sm text-green-600">
               {email} 주소로 재설정 메일을 보냈습니다.
             </p>
-            <a href="/login">로그인으로</a>
+            <a className="text-main-white" href="/login">
+              로그인으로
+            </a>
           </>
         ) : (
           <>
@@ -37,7 +39,7 @@ export default function FindPwd() {
               placeholder="이메일 입력"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="border p-2 rounded"
+              className="border p-2 rounded text-main-white"
               required
             />
             <button
@@ -46,7 +48,9 @@ export default function FindPwd() {
             >
               재설정 메일 보내기
             </button>
-            <a href="/login">돌아가기</a>
+            <a className="text-main-white self-start" href="/login">
+              돌아가기
+            </a>
           </>
         )}
       </form>

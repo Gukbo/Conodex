@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db, auth } from "../services/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { getAuthErrorMessage } from "../utils/firebaseError";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -13,37 +14,39 @@ export default function Signup() {
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      const cleanEmail = email.trim().toLowerCase();
       const userCredential = await createUserWithEmailAndPassword(
         auth,
-        email,
+        cleanEmail,
         password
       );
       const user = userCredential.user;
+
       await setDoc(doc(db, "users", user.uid), {
-        eamil: user.email,
+        email: user.email,
         nickname: nickname,
         createdAt: new Date(),
       });
-      alert("회원가입 성공!");
-      navigate("/"); // 회원가입 후 홈으로 이동
+      alert("회원가입이 완료되었습니다!");
+      navigate("/");
     } catch (error: any) {
-      alert("회원가입 실패: " + error.message);
+      alert(getAuthErrorMessage(error.code));
     }
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
+    <div className="flex h-screen items-center justify-center bg-main-black">
       <form
         onSubmit={handleSignup}
-        className="bg-white p-6 rounded-xl shadow-md flex flex-col gap-4 w-80"
+        className="bg-point-black p-6 rounded-xl shadow-md flex flex-col gap-4 w-80"
       >
-        <h2 className="text-xl font-bold">회원가입</h2>
+        <h2 className="text-main-white text-xl font-bold">회원가입</h2>
         <input
           type="email"
           placeholder="이메일"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 rounded"
+          className="border p-2 rounded text-main-white"
           required
         />
         <input
@@ -51,7 +54,7 @@ export default function Signup() {
           placeholder="비밀번호"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border p-2 rounded"
+          className="border p-2 rounded text-main-white"
           required
         />
         <input
@@ -59,15 +62,18 @@ export default function Signup() {
           placeholder="닉네임"
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
-          className="border p-2 rounded"
+          className="border p-2 rounded text-main-white"
           required
         />
         <button
           type="submit"
-          className="bg-green-500 text-white p-2 rounded hover:bg-green-600"
+          className="bg-blue-500 text-main-white p-2 rounded hover:bg-blue-600"
         >
           회원가입
         </button>
+        <a className="text-main-white self-start" href="/login">
+          돌아가기
+        </a>
       </form>
     </div>
   );
