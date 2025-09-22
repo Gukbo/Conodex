@@ -29,9 +29,9 @@ export default function FindPwd() {
             <p className="text-sm text-green-600">
               {email} 주소로 재설정 메일을 보냈습니다.
             </p>
-            <a className="text-main-white" href="/login">
+            <Link className="text-main-white" to="/login">
               로그인으로
-            </a>
+            </Link>
           </>
         ) : (
           <>

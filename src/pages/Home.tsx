@@ -23,18 +23,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col h-screen items-center justify-center gap-4">
-      {user ? (
-        <>
-          <h1 className="text-2xl font-bold">
-            {nickname
-              ? `${nickname}님 환영합니다 🎵`
-              : `${user.email}님 환영합니다`}
-          </h1>
-          <LogoutButton />
-        </>
-      ) : (
-        <h1 className="text-xl">로그인이 필요합니다</h1>
-      )}
+      <h1>{nickname}의 애창곡 리스트</h1>
     </div>
   );
 }
