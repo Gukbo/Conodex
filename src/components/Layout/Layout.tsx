@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
-import LogoutButton from "../LogoutBtn";
-import { useAuth } from "../../contexts/AuthContext";
 import Header from "./Header";
+import Footer from "./Footer";
 
 export default function Layout() {
   return (
@@ -14,7 +13,9 @@ export default function Layout() {
           <Outlet />
         </div>
       </main>
-      <footer>푸터</footer>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }

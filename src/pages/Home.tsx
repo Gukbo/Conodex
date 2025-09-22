@@ -2,7 +2,6 @@ import { useAuth } from "../contexts/AuthContext";
 import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../services/firebase";
-import LogoutButton from "../components/LogoutBtn";
 
 export default function Home() {
   const { user } = useAuth();
@@ -22,8 +21,6 @@ export default function Home() {
   }, [user]);
 
   return (
-    <div className="flex flex-col h-screen items-center justify-center gap-4">
-      <h1>{nickname}의 애창곡 리스트</h1>
-    </div>
+    <div className="flex flex-col h-screen items-center justify-center gap-4"></div>
   );
 }
