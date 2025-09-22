@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../services/firebase";
+import { Link } from "react-router-dom";
 
 export default function FindPwd() {
   const [email, setEmail] = useState("");
@@ -48,9 +49,9 @@ export default function FindPwd() {
             >
               재설정 메일 보내기
             </button>
-            <a className="text-main-white self-start" href="/login">
+            <Link className="text-main-white self-start" to="/login">
               돌아가기
-            </a>
+            </Link>
           </>
         )}
       </form>

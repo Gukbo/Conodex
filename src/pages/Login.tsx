@@ -1,6 +1,6 @@
 // src/pages/Login.tsx
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   signInWithEmailAndPassword,
   setPersistence,
@@ -62,12 +62,12 @@ export default function Login() {
         >
           {pending ? "로그인 중..." : "로그인"}
         </button>
-        <a className="text-main-white self-start" href="/signUp">
+        <Link className="text-main-white self-start" to="/signUp">
           회원가입
-        </a>
-        <a className="text-main-white self-start" href="/FindPwd">
+        </Link>
+        <Link className="text-main-white self-start" to="/FindPwd">
           비밀번호 찾기
-        </a>
+        </Link>
       </form>
     </div>
   );

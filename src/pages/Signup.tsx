@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db, auth } from "../services/firebase";
 import { doc, setDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuthErrorMessage } from "../utils/firebaseError";
 
 export default function Signup() {
@@ -71,9 +71,9 @@ export default function Signup() {
         >
           회원가입
         </button>
-        <a className="text-main-white self-start" href="/login">
+        <Link className="text-main-white self-start" to="/login">
           돌아가기
-        </a>
+        </Link>
       </form>
     </div>
   );
