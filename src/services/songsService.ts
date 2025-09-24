@@ -14,21 +14,21 @@ import { db } from "./firebase";
 export type SongInput = {
   title?: string;
   artist?: string;
-  songNumber: number;
+  songNumber: string;
 };
 
 export type Song = {
   id: string;
   title: string;
   artist: string;
-  songNumber: number;
+  songNumber: string;
   createdAt?: any;
 };
 
 export async function addSong(uid: string, input: SongInput) {
   const title = input.title?.trim();
   const artist = input.artist?.trim();
-  const songNumber = input.songNumber;
+  const songNumber = input.songNumber?.trim();
   if (!songNumber) throw new Error("노래방 번호는 필수입니다.");
 
   await addDoc(collection(db, "users", uid, "songs"), {
@@ -49,7 +49,7 @@ export function listenSongs(uid: string, cb: (songs: Song[]) => void) {
       id: d.id,
       title: (d.data().title ?? "") as string,
       artist: (d.data().artist ?? "") as string,
-      songNumber: d.data().songNumber as number,
+      songNumber: d.data().songNumber as string,
       createdAt: d.data().createdAt,
     }));
     cb(list);

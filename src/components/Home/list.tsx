@@ -12,7 +12,7 @@ export default function List() {
   const [songs, setSongs] = useState<Song[]>([]);
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
-  const [songNumber, setSongNumber] = useState<number | "">("");
+  const [songNumber, setSongNumber] = useState<string>("");
   const [pending, setPending] = useState(false);
 
   useEffect(() => {
@@ -60,11 +60,9 @@ export default function List() {
           />
           <input
             value={songNumber}
-            onChange={(e) => {
-              const value = e.target.value;
-              setSongNumber(value === "" ? "" : Number(value));
-            }}
-            placeholder="노래방 번호 (필수)"
+            onChange={(e) => setSongNumber(e.target.value)}
+            pattern="\d+"
+            placeholder="노래방 번호 (숫자만)"
             required
             className="w-48 rounded border border-gray-700 bg-gray-800 px-3 py-2"
           />
