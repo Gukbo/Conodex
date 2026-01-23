@@ -18,7 +18,7 @@ React Query와 Zustand의 효율적인 상태 관리 패턴을 학습하고 검�
     * **Client State:** Zustand - 장바구니(애창곡 리스트) 전역 상태 및 로컬 스토리지 연동
 * **Optimization:** Custom Debounce Hook (검색 최적화)
 
-* 
+
 
 ### 3. 핵심 문제 해결 (Troubleshooting)
 #### ⚡️ 검색 API 호출 낭비 방지 (Debouncing)
